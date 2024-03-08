@@ -1,4 +1,4 @@
-#include "Contact.hpp"
+#include "../includes/Contact.hpp"
 
 Contact::Contact()
 {
@@ -31,11 +31,12 @@ std::string	Contact::_getinput(std::string str)
 void	Contact::init(void)
 {
 	std::cin.ignore();
-	this->_fName = this->_getinput("What is your first name?");
-	this->_lName = this->_getinput("What is your last name?");
-	this->_nickname = this->_getinput("What is your nickname?");
-	this->_number = this->_getinput("What is your number?");
-	this->_secret = this->_getinput("What is your darkest secret?");
+	this->_fName = this->_getinput("What is your first name? ");
+	this->_lName = this->_getinput("What is your last name? ");
+	this->_nickname = this->_getinput("What is your nickname? ");
+	this->_number = this->_getinput("What is your number? ");
+	this->_secret = this->_getinput("What is your darkest secret? ");
+	std::cout << std::endl;
 }
 
 void	Contact::setIndex(int i)
@@ -65,7 +66,7 @@ void	Contact::printContact(int i) const
 {
 	if (this->_fName.empty())
 	{
-		std::cout << "This index does not exist" << std::endl;
+		std::cout << "This index does not exist :(" << std::endl;
 		return;
 	}
 	std::cout << "**********************************" << std::endl;
@@ -74,7 +75,8 @@ void	Contact::printContact(int i) const
 	std::cout << "Last Name: " << this->_lName << std::endl;
 	std::cout << "Nickname: " << this->_nickname << std::endl;
 	std::cout << "Phone #: " << this->_number << std::endl;
-	std::cout << "Darkest Secret" << this->_secret << std::endl;
+	std::cout << "Darkest Secret: " << this->_secret << std::endl;
+	std::cout << std::endl;
 }
 
 

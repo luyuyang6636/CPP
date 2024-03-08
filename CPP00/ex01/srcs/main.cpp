@@ -1,4 +1,4 @@
-#include "PhoneBook.hpp"
+#include "../includes/PhoneBook.hpp"
 
 int	main(void)
 {
@@ -8,7 +8,7 @@ int	main(void)
 	book.title();
 	while (input.compare("EXIT"))
 	{
-		std::cout << ">" << std::flush;
+		std::cout << "> " << std::flush;
 		std::cin >> input;
 		if (!input.compare("ADD"))
 			book.addContact();

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "../includes/PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
 {
@@ -47,8 +47,9 @@ void	PhoneBook::printContact(void) const
 	std::cout << "|" << std::setw(10) << std::right << "Index" << std::flush;
 	std::cout << "|" << std::setw(10) << std::right << "First" << std::flush;
 	std::cout << "|" << std::setw(10) << std::right << "Last" << std::flush;
-	std::cout << "|" << std::setw(10) << std::right << "nickname" << std::flush;
+	std::cout << "|" << std::setw(10) << std::right << "Nickname" << std::flush;
 	std::cout << "|" << std::endl;
+	std::cout << "---------------------------------------------"<<std::endl;
 	for (int i = 0; i < 8; i++)
 		this->_contacts[i].printTable(i);
 }
@@ -61,14 +62,15 @@ int	PhoneBook::readIndex(void) const
 	std::cout << std::endl;
 	while (check == false)
 	{
-		std::cout << "Please enter the index you wish to display full info:" << std::flush;
+		std::cout << "Please enter the index you wish to display full info: " << std::flush;
 		std::cin >> i;
 		if (std::cin.good() && i >= 0 && i <= 7)
 			check = true;
 		else
 		{
 			std::cin.clear();
-			std::cout << "Invalid index, please enter a number between 0 and 7" << std::endl;
+			std::cout << "Invalid index, please enter a number between 0 and 7!" << std::endl;
+			std::cout << std::endl;
 		}
 	}
 	return (i);
@@ -77,8 +79,8 @@ int	PhoneBook::readIndex(void) const
 void	PhoneBook::searchContact() const
 {
 	int	i;
-
-	i = this->readIndex();
+	
 	this->printContact();
+	i = this->readIndex();
 	this->_contacts[i].printContact(i);
 }
