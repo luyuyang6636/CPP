@@ -57,6 +57,7 @@ void	PhoneBook::printContact(void) const
 int	PhoneBook::readIndex(void) const
 {
 	int	i;
+	const int	maxInt = 1000000;
 	bool	check = false;
 
 	std::cout << std::endl;
@@ -69,6 +70,7 @@ int	PhoneBook::readIndex(void) const
 		else
 		{
 			std::cin.clear();
+			std::cin.ignore(maxInt, '\n');
 			std::cout << "Invalid index, please enter a number between 0 and 7!" << std::endl;
 			std::cout << std::endl;
 		}
