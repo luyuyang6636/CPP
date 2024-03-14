@@ -5,40 +5,35 @@
 #                                                     +:+ +:+         +:+      #
 #    By: luyang <luyang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/14 20:39:09 by luyang            #+#    #+#              #
-#    Updated: 2024/03/14 20:39:12 by luyang           ###   ########.fr        #
+#    Created: 2024/03/14 22:43:09 by luyang            #+#    #+#              #
+#    Updated: 2024/03/14 22:51:25 by luyang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = PhoneBook
+NAME = Brian
 
-SRCS = Contact.cpp main.cpp PhoneBook.cpp
-OBJS = $(SRCS:%.cpp=$(OBJS_DIR)/%.o)
-HEADER = Contact.hpp PhoneBook.hpp
-
-SRCS_DIR = srcs
-OBJS_DIR = objs
-INC_DIR = includes
+SRC = main.cpp
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g 
-RM = rm -f
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g
+RM = rm -rf
+OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(OBJS_DIR)/%.o : $(SRCS_DIR)/%.cpp
-			$(CC) $(FLAGS) -c $< -o $@
+.o: .cpp
+	$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
-			$(CC) $(OBJS) $(FLAGS) -o $(NAME)
+$(NAME):
+	@$(CC) $(FLAGS) $(SRC) -o $(NAME)
+	@printf "program compiled!\n"
 
-clean:
-		$(RM) $(OBJS_DIR)/*
+clean: $(OBJ)
+		@$(RM) $^
 
 fclean: clean
-		$(RM) $(NAME)
+		@$(RM) $(NAME)
 
 re: fclean all
 
 .PHONY: all clean fclean re
 
-		

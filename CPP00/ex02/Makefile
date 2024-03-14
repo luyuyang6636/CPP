@@ -5,40 +5,36 @@
 #                                                     +:+ +:+         +:+      #
 #    By: luyang <luyang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/14 20:39:09 by luyang            #+#    #+#              #
-#    Updated: 2024/03/14 20:39:12 by luyang           ###   ########.fr        #
+#    Created: 2024/03/14 15:55:01 by luyang            #+#    #+#              #
+#    Updated: 2024/03/14 16:28:40 by luyang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = PhoneBook
+NAME = Account
 
-SRCS = Contact.cpp main.cpp PhoneBook.cpp
-OBJS = $(SRCS:%.cpp=$(OBJS_DIR)/%.o)
-HEADER = Contact.hpp PhoneBook.hpp
-
-SRCS_DIR = srcs
+SRCS = Account.cpp tests.cpp
+OBJS = ${SRCS:%.cpp=$(OBJS_DIR)/%.o}
 OBJS_DIR = objs
-INC_DIR = includes
+
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g 
-RM = rm -f
+FLAGS = -Wall -Wextra -Werror -std=c++98
+RM = rm -rf
 
 all: $(NAME)
 
-$(OBJS_DIR)/%.o : $(SRCS_DIR)/%.cpp
-			$(CC) $(FLAGS) -c $< -o $@
+$(OBJS_DIR)/%.o : %.cpp
+		mkdir -p $(OBJS_DIR)
+		$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-			$(CC) $(OBJS) $(FLAGS) -o $(NAME)
+		$(CC) $(FLAGS) $^ -o $(NAME)
 
 clean:
-		$(RM) $(OBJS_DIR)/*
+		$(RM) $(OBJS_DIR)
 
 fclean: clean
 		$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
-
-		
+.PHONY: all fclean clean re
