@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luyang <luyang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: luyang <luyang@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 22:55:08 by luyang            #+#    #+#             */
-/*   Updated: 2024/03/14 23:04:05 by luyang           ###   ########.fr       */
+/*   Updated: 2024/03/15 18:28:24 by luyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 # include "Weapon.hpp"
 # include <iostream>
 
-class Weapon
-{
+class Weapon{
+	
 private:
 	std::string	_type;
 
 public:
-	Weapon(void);
+	Weapon(std::string name);
 	~Weapon(void);
 	const std::string	&getType(void);
 	void	setType(std::string newType);

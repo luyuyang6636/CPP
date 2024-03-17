@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luyang <luyang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: luyang <luyang@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 23:00:54 by luyang            #+#    #+#             */
-/*   Updated: 2024/03/14 23:03:44 by luyang           ###   ########.fr       */
+/*   Updated: 2024/03/15 18:57:03 by luyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 class HumanB{
 private:
 	std::string	_name;
-	Weapon		_w;
+	Weapon		*_weapon;
 
 public:
-	HumanB(void);
+	HumanB(std::string name);
 	~HumanB(void);
-	void attack(void);
+	void	attack(void) const;
+	void	setWeapon(Weapon &w);
 };
 
 #endif
