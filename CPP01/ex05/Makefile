@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: luyang <luyang@student.42london.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/15 18:18:11 by luyang            #+#    #+#              #
-#    Updated: 2024/03/18 00:19:01 by luyang           ###   ########.fr        #
+#    Created: 2024/03/17 23:37:44 by luyang            #+#    #+#              #
+#    Updated: 2024/03/18 00:02:17 by luyang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Violence
+NAME = Harl
 
-SRCS = Weapon.cpp main.cpp HumanA.cpp HumanB.cpp
+SRCS = main.cpp Harl.cpp
 OBJS = ${SRCS:%.cpp=$(OBJ_DIR)/%.o}
 
 SRC_DIR = srcs
@@ -25,20 +25,20 @@ RM = rm -rf
 all: $(NAME)
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.cpp
-		@mkdir -p $(OBJ_DIR)
-		@$(CC) $(FLAGS) -c $< -o $@
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-		@$(CC) $(FLAGS) $^ -o $(NAME)
-		@printf "program compiled!\n"
+	@$(CC) $(FLAGS) $^ -o $@
+	@printf "program compiled!\n"
 
-clean: $(OBJS)
-		@$(RM) $(OBJ_DIR)
-		@printf "cleaned object files!\n"
+clean:
+	@$(RM) $(OBJ_DIR)
+	@printf "removed object files!\n"
 
 fclean: clean
-		@$(RM) $(NAME)
-		@printf "cleaned executable!\n"
+	@$(RM) $(NAME)
+	@printf "removed executable!\n"
 
 re: fclean all
 
