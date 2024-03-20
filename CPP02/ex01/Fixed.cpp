@@ -6,7 +6,7 @@
 /*   By: luyang <luyang@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:49:21 by luyang            #+#    #+#             */
-/*   Updated: 2024/03/19 00:13:01 by luyang           ###   ########.fr       */
+/*   Updated: 2024/03/19 15:40:10 by luyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ Fixed::Fixed(const Fixed &copy)
 Fixed::Fixed(const int integer)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->_number = (integer << this->_bits);
+	this->_number = (integer << Fixed::_bits);
 }
 
 Fixed::Fixed(const float floating)
 {
 	std::cout << "Floating point constructor called" << std::endl;
-	this->_number = std::roundf(floating * (1 << this->_bits));
+	this->_number = std::roundf(floating * (1 << Fixed::_bits));
 }
 
 Fixed	&Fixed::operator=(const Fixed &rhs)
@@ -60,12 +60,12 @@ void	Fixed::setRawBits(int const raw)
 	
 float	Fixed::toFloat(void) const
 {
-	return ((float)this->_number / (float)(1 << this->_bits));
+	return ((float)this->_number / (float)(1 << Fixed::_bits));
 }
 
 int	Fixed::toInt(void) const
 {
-	return (this->_number >> this->_bits);
+	return (this->_number >> Fixed::_bits);
 }
 
 std::ostream	&operator<<(std::ostream &stream, const Fixed &f)
